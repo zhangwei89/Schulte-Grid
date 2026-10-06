@@ -1,0 +1,10 @@
+﻿# Development and temporary files
+build.py
+fix_css.py
+test_suite.js
+test*.txt
+*.tmp
+.DS_Store
+Thumbs.db
+
+.gitconfig_temp

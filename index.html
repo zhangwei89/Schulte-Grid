@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>舒尔特方格 - 专注力与视野速度训练</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234F46E5'/><text y='68' x='50' font-size='54' font-weight='bold' text-anchor='middle' fill='white'>25</text></svg>">
+</head>
+<body>
+  <div class="app-container">
+    <!-- 顶部导航栏 -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo-badge" id="logoBadge">
+          <span>25</span>
+        </div>
+        <div>
+          <h1 class="app-title">舒尔特方格</h1>
+          <p class="app-subtitle">Schulte Focus Master</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="guideBtn" class="icon-btn" title="训练指南与科学原理" aria-label="训练指南">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </button>
+        <button id="statsBtn" class="icon-btn" title="训练战绩与数据分析" aria-label="统计数据">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </button>
+        <button id="settingsBtn" class="icon-btn" title="游戏设置" aria-label="设置">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </button>
+        <button id="themeToggleBtn" class="icon-btn" title="切换暗黑/浅色模式" aria-label="主题切换">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- 规格与模式选择 -->
+    <section class="control-panel">
+      <div class="tabs-group">
+        <span class="group-label">规格：</span>
+        <div class="segmented-control" id="sizeSelector">
+          <button class="seg-btn" data-size="3">3×3<span class="sub-tag">9格</span></button>
+          <button class="seg-btn" data-size="4">4×4<span class="sub-tag">16格</span></button>
+          <button class="seg-btn active" data-size="5">5×5<span class="sub-tag">标准</span></button>
+          <button class="seg-btn" data-size="6">6×6<span class="sub-tag">36格</span></button>
+          <button class="seg-btn" data-size="7">7×7<span class="sub-tag">大师</span></button>
+        </div>
+      </div>
+
+      <div class="tabs-group">
+        <span class="group-label">模式：</span>
+        <div class="segmented-control mode-control" id="modeSelector">
+          <button class="seg-btn active" data-mode="classic">正序 (1→N)</button>
+          <button class="seg-btn" data-mode="reverse">倒序 (N→1)</button>
+          <button class="seg-btn" data-mode="blind">记忆消隐</button>
+          <button class="seg-btn" data-mode="color">色彩干扰</button>
+          <button class="seg-btn" data-mode="shuffle">动态微移</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 状态看板 -->
+    <section class="dashboard">
+      <div class="dash-card timer-card">
+        <div class="dash-label">用时</div>
+        <div class="timer-display" id="timerDisplay">00:00.00</div>
+      </div>
+      <div class="dash-card target-card">
+        <div class="dash-label">当前寻找</div>
+        <div class="target-display" id="targetDisplay">1</div>
+      </div>
+      <div class="dash-card record-card">
+        <div class="dash-label">该规格最佳</div>
+        <div class="record-display" id="bestRecordDisplay">--:--.--</div>
+      </div>
+      <div class="dash-card error-card">
+        <div class="dash-label">误触</div>
+        <div class="error-display" id="errorDisplay">0</div>
+      </div>
+    </section>
+
+    <!-- 游戏主区域 -->
+    <main class="game-area">
+      <div class="focal-point" id="focalPoint" title="注视中心，使用余光搜寻"></div>
+
+      <div class="grid-wrapper">
+        <div class="schulte-grid size-5" id="schulteGrid"></div>
+
+        <div class="grid-overlay" id="gridOverlay">
+          <div class="overlay-content" id="overlayContent">
+            <div class="overlay-icon">&#9889;</div>
+            <h2 id="overlayTitle">舒尔特专注力挑战</h2>
+            <p id="overlayDesc">请点击下方按钮或按空格键开始挑战，依序点击所有目标！</p>
+            <button id="startPlayBtn" class="primary-btn pulse-glow">开始挑战</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 快捷操作栏 -->
+      <div class="action-bar">
+        <button id="restartBtn" class="action-btn" title="重新开始 (快捷键 R)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          重置 / 重开
+        </button>
+        <button id="soundToggleBtn" class="action-btn" title="音效开关 (快捷键 M)">
+          <svg class="sound-on-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <svg class="sound-off-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+          <span id="soundText">音效开启</span>
+        </button>
+        <button id="focalToggleBtn" class="action-btn" title="视觉中心锚点开关 (快捷键 H)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+          中心锚点
+        </button>
+        <button id="fullscreenBtn" class="action-btn" title="全屏沉浸模式 (快捷键 F)">
+          <svg class="enter-fs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+          <svg class="exit-fs-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14h6m0 0v6m0-6-7 7m17-11h-6m0 0V4m0 6 7-7m-7 14 7 7m-7-7v6m0-6h6M3 7l7 7m-7-7h6m-6 0V1"/></svg>
+          全屏模式
+        </button>
+      </div>
+    </main>
+
+    <!-- 底部进度与提示 -->
+    <footer class="app-footer">
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+      <div class="footer-tip">
+        <span>&#128161; 训练技巧：眼睛尽量注视方格正中央，利用<strong>周边视野（余光）</strong>搜寻目标，切忌眼球大幅左右频繁扫动！</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- 结算弹窗 Modal -->
+  <div class="modal" id="resultModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog result-dialog">
+      <div class="result-header">
+        <div class="result-rank-badge" id="resultRankBadge">SSS</div>
+        <h2 id="resultTitle">恭喜完成挑战！</h2>
+        <p id="resultSubtitle">你的注意力与视野搜索能力非常出色</p>
+      </div>
+
+      <div class="result-stats-grid">
+        <div class="res-stat-item">
+          <span class="res-stat-label">总用时</span>
+          <span class="res-stat-value" id="resultTime">00:15.32</span>
+        </div>
+        <div class="res-stat-item">
+          <span class="res-stat-label">平均反应</span>
+          <span class="res-stat-value" id="resultAvgReaction">0.61 秒/格</span>
+        </div>
+        <div class="res-stat-item">
+          <span class="res-stat-label">失误统计</span>
+          <span class="res-stat-value" id="resultErrors">0 次 (完美无失误)</span>
+        </div>
+        <div class="res-stat-item">
+          <span class="res-stat-label">最快单格反应</span>
+          <span class="res-stat-value" id="resultFastest">0.24s</span>
+        </div>
+      </div>
+
+      <div class="rating-feedback-box">
+        <div class="rating-title" id="ratingTitle">测评等级说明</div>
+        <p class="rating-desc" id="ratingDesc">国际标准 5x5 测试中，成绩在 15 秒以内属于顶级注意力水平，常用于飞行员、速读学员等专业视野训练。</p>
+      </div>
+
+      <div class="pace-chart-box">
+        <div class="pace-chart-title">每格点击间隔时间走势 (ms)</div>
+        <div class="pace-chart-bars" id="paceChartBars"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button id="resultShareBtn" class="secondary-btn">复制成绩战报</button>
+        <button id="resultAgainBtn" class="primary-btn">再来一局 (Space)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 统计记录 Modal -->
+  <div class="modal" id="statsModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog stats-dialog">
+      <div class="modal-header">
+        <h2>&#128202; 训练战绩与数据分析</h2>
+        <button class="close-modal-btn" data-close="statsModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="stats-overview-cards">
+          <div class="overview-card">
+            <span class="num" id="totalGamesCount">0</span>
+            <span class="txt">累计训练场次</span>
+          </div>
+          <div class="overview-card">
+            <span class="num" id="standardBestTime">--</span>
+            <span class="txt">5×5 历史最快</span>
+          </div>
+          <div class="overview-card">
+            <span class="num" id="averageTimeOverall">--</span>
+            <span class="txt">5×5 平均耗时</span>
+          </div>
+        </div>
+
+        <h3 class="section-subheading">各规格个人最佳纪录 (PB)</h3>
+        <div class="pb-grid" id="pbGrid"></div>
+
+        <h3 class="section-subheading">最近 15 局训练明细</h3>
+        <div class="history-table-container">
+          <table class="history-table">
+            <thead>
+              <tr>
+                <th>时间</th>
+                <th>规格</th>
+                <th>模式</th>
+                <th>用时</th>
+                <th>失误</th>
+                <th>评级</th>
+              </tr>
+            </thead>
+            <tbody id="historyTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="clearDataBtn" class="text-danger-btn">清空所有历史数据</button>
+        <button class="primary-btn" data-close="statsModal">完成</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 设置 Modal -->
+  <div class="modal" id="settingsModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog settings-dialog">
+      <div class="modal-header">
+        <h2>&#9881;&#65039; 游戏与训练偏好设置</h2>
+        <button class="close-modal-btn" data-close="settingsModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="settingCountdown">倒计时准备</label>
+            <p>游戏开始前播放 3-2-1 预备倒计时</p>
+          </div>
+          <input type="checkbox" id="settingCountdown" class="toggle-switch" checked>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="settingNextHint">下一目标高亮提示</label>
+            <p>在方格中对目标数字提供轻微边框提示（关闭后为纯真实盲查）</p>
+          </div>
+          <input type="checkbox" id="settingNextHint" class="toggle-switch">
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="settingErrorPenalty">误触时间惩罚</label>
+            <p>每次误点错误目标时追加惩罚时间 (+1.00秒)</p>
+          </div>
+          <input type="checkbox" id="settingErrorPenalty" class="toggle-switch" checked>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="settingSoundVol">音效音量</label>
+            <p>调节点击与完成音效的强弱</p>
+          </div>
+          <input type="range" id="settingSoundVol" min="0" max="100" value="70" class="range-slider">
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="settingNumType">字符表现形式</label>
+            <p>选择阿拉伯数字、中文简体汉字、中文大写数字或英文字母</p>
+          </div>
+          <select id="settingNumType" class="select-box">
+            <option value="arabic">阿拉伯数字 (1, 2, 3...)</option>
+            <option value="chinese_simple">中文简体数字 (一, 二, 三...)</option>
+            <option value="chinese_upper">中文大写数字 (壹, 贰, 叁...)</option>
+            <option value="letter">英文字母 (A, B, C...)</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <div class="setting-info">
+            <label for="settingThemeHue">视觉主色调</label>
+            <p>自定义界面与按键的主题视觉风格</p>
+          </div>
+          <select id="settingThemeHue" class="select-box">
+            <option value="indigo">极光靛蓝 (Indigo)</option>
+            <option value="emerald">森境翡翠 (Emerald)</option>
+            <option value="rose">晚霞绯红 (Rose)</option>
+            <option value="amber">琥珀金芒 (Amber)</option>
+            <option value="violet">赛博极客 (Violet)</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="primary-btn" data-close="settingsModal">保存并退出</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 训练指南 Modal -->
+  <div class="modal" id="guideModal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-dialog guide-dialog">
+      <div class="modal-header">
+        <h2>&#128214; 舒尔特方格科学训练指南</h2>
+        <button class="close-modal-btn" data-close="guideModal">&times;</button>
+      </div>
+      <div class="modal-body guide-content">
+        <div class="guide-section">
+          <h3>什么是舒尔特方格（Schulte Table）？</h3>
+          <p>舒尔特方格是由德国心理治疗师瓦尔特·舒尔特（Walter Schulte）发明的经典注意力训练测验法。它最初用于心理学上注意力分配与广度的测定，后来被广泛应用于飞行员选拔训练、专业运动员反应拓展及快速阅读（速读）视野训练。</p>
+        </div>
+
+        <div class="guide-section">
+          <h3>科学标准 5×5 成绩对照表（成年人）</h3>
+          <ul class="guide-list">
+            <li><strong>7 ~ 12 秒：</strong> 顶级水平（宇航员/顶级电竞/专业速读级，周边视野开发极高）</li>
+            <li><strong>13 ~ 18 秒：</strong> 极优秀（注意力高度集中，反应敏捷）</li>
+            <li><strong>19 ~ 25 秒：</strong> 良好水平（普通成人的优秀水平）</li>
+            <li><strong>26 ~ 35 秒：</strong> 中等水平（日常正常水平）</li>
+            <li><strong>36 秒以上：</strong> 注意力较分散或眼球频繁大幅跳跃，需坚持日常练习</li>
+          </ul>
+        </div>
+
+        <div class="guide-section">
+          <h3>科学训练的核心秘诀</h3>
+          <div class="tip-card">
+            <h4>1. 练“余光”，而不是练“转眼球”</h4>
+            <p>切忌眼珠跟着手指或数字满屏乱转！初学者常犯错误是一格一格去看，导致眼肌疲劳且耗时长。正确方法是：双眼视线自然定格在<strong>正中央的格子</strong>，保持放松，扩大视野范围，用<strong>周边余光（周边视觉）</strong>捕捉周围数字。</p>
+          </div>
+          <div class="tip-card">
+            <h4>2. 选中变色与视野恢复</h4>
+            <p>当前选中的数字会高亮变色，当选择下一个数字时，前一个数字会完全恢复原有颜色。这样既能清晰知晓最近击中目标，又能保留整盘的充分干扰，极大锻炼余光快速定位能力。</p>
+          </div>
+          <div class="tip-card">
+            <h4>3. 视界扩展与节奏感</h4>
+            <p>在找当前数字的同时，余光顺便标记下一个数字的位置。形成“发现 1 的瞬间已捕捉到 2”的预读节奏。</p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="primary-btn" data-close="guideModal">我知道了，开始练习</button>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <script src="app.js"></script>
+</body>
+</html>
